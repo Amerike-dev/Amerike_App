@@ -3705,6 +3705,7 @@ GameObject:
   - component: {fileID: 1119801984}
   - component: {fileID: 1119801983}
   - component: {fileID: 1119801982}
+  - component: {fileID: 1119801985}
   m_Layer: 5
   m_Name: DayBlock-1
   m_TagString: Untagged
@@ -3804,6 +3805,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119801980}
   m_CullTransparentMesh: 1
+--- !u!114 &1119801985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119801980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7accfd70c698cef4cb989d6bf903f17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134902351
 GameObject:
   m_ObjectHideFlags: 0

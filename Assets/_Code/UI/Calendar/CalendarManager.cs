@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Globalization;
 
 public class CalendarManager : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class CalendarManager : MonoBehaviour
     private DateTime _currentDay;
     private DateTime[] _weekDisplay;
     private DayOfWeek _dayOfWeek;
+    
+    private int _weekOfTheYear;
+    private Calendar _calendar;
+    CultureInfo myCI = new CultureInfo("en-US");
+    private CalendarWeekRule myCWR;
+    private DayOfWeek myFirstDOW;
+  
 
     #endregion
 
@@ -19,22 +27,18 @@ public class CalendarManager : MonoBehaviour
 
     public DateTime CurrentDay
     {
-        get
-        {
-           return _currentDay = DateTime.Today;
-        }
+
+        get => _currentDay;
     }
 
     public DayOfWeek DayOfWeek
     {
-        get
-        {
-            return _dayOfWeek = CurrentDay.DayOfWeek;
-        }
+        get => _dayOfWeek;
     }
-
+    
+    public Action OnFinishedLoading;
     #endregion
-    void Start()
+    void Awake()
     {
         Initialize();
     }
@@ -46,7 +50,20 @@ public class CalendarManager : MonoBehaviour
 
     void Initialize()
     {
-        // _currentDay = DateTime.Today;
-        // _dayOfWeek = _currentDay.DayOfWeek;
+        //Get current Day info
+        _currentDay = DateTime.Today;
+        _dayOfWeek = _currentDay.DayOfWeek;
+       
+        //Get week of the year
+        _calendar = myCI.Calendar;
+        myCWR = myCI.DateTimeFormat.CalendarWeekRule;
+        myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+        _weekOfTheYear = _calendar.GetWeekOfYear(_currentDay, myCWR, myFirstDOW);
+        Debug.Log(_weekOfTheYear);
+        
+        
+        OnFinishedLoading?.Invoke();
+        
     }
+    
 }

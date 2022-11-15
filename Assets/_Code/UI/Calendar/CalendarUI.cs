@@ -13,7 +13,7 @@ public class CalendarUI : MonoBehaviour
 
     private void Start()
     {
-        InitializeUI();
+        CalendarManager.Instance.OnFinishedLoading += InitializeUI;
     }
 
     void InitializeUI()
