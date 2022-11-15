@@ -40,6 +40,7 @@ public class CalendarManager : MonoBehaviour
     #endregion
     void Awake()
     {
+        Instance = this;
         Initialize();
     }
 
