@@ -7,16 +7,16 @@ using System.Globalization;
 public class CalendarManager : MonoBehaviour
 {
     public static CalendarManager Instance;
-
+    
     #region private var
 
     private DateTime _currentDay;
-    private DateTime[] _weekDisplay;
+    private DateTime[] _weekDisplay = new DateTime[7];
     private DayOfWeek _dayOfWeek;
     
     private int _weekOfTheYear;
     private Calendar _calendar;
-    CultureInfo myCI = new CultureInfo("en-US");
+    private CultureInfo myCI = new CultureInfo("en-US");
     private CalendarWeekRule myCWR;
     private DayOfWeek myFirstDOW;
   
@@ -60,8 +60,18 @@ public class CalendarManager : MonoBehaviour
         myCWR = myCI.DateTimeFormat.CalendarWeekRule;
         myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
         _weekOfTheYear = _calendar.GetWeekOfYear(_currentDay, myCWR, myFirstDOW);
-        Debug.Log(_weekOfTheYear);
+        // Debug.Log(_weekOfTheYear);
+
+
+        _weekDisplay[0] = _currentDay;
         
+        for (int i = 0; i < _weekDisplay.Length; i++)
+        {
+            if (_weekDisplay[i] != _currentDay)
+            {
+                
+            }
+        }
         
         OnFinishedLoading?.Invoke();
         
