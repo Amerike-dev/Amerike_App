@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 3531750290736294683}
   - component: {fileID: 3531750290736294680}
   m_Layer: 5
-  m_Name: 02. Color Login Panel (Posible animated)
+  m_Name: 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
