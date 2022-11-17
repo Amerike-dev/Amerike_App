@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using System.Security;
 
 public static class SSBuilder
@@ -14,5 +15,19 @@ public static class SSBuilder
         }
 
         return secureString;
+    }
+
+    public static string BuildUnsecureString(SecureString cleanString)
+    {
+        IntPtr unsecureString = IntPtr.Zero;
+        try
+        {
+            unsecureString = Marshal.SecureStringToGlobalAllocUnicode(cleanString);
+            return Marshal.PtrToStringUni(unsecureString);
+        }
+        finally
+        {
+            Marshal.ZeroFreeGlobalAllocUnicode(unsecureString);
+        }
     }
 }
