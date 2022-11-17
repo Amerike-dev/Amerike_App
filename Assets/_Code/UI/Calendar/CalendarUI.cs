@@ -7,23 +7,33 @@ using UnityEngine.UI;
 public class CalendarUI : MonoBehaviour
 {
     [SerializeField] private string[] daysName;
+    // [SerializeField] private DateTime[] _daysDisplays;
     [SerializeField] private DayBlock[] _blocks;
-    private void Start()
-    {
-        CalendarManager.Instance.OnFinishedLoading += InitializeUI;
-    }
 
-    void InitializeUI()
+    private DayOfWeek[] _dayOfWeeks;
+
+    public void InitializeUI()
     {
+        _dayOfWeeks = CalendarManager.Instance.DaysOfWeek;
         SetDays();
     }
 
     void SetDays()
     {
-        foreach (DayBlock dayBlock in _blocks)
+
+        
+        
+        for (int i = 0; i < _dayOfWeeks.Length; i++)
         {
-            dayBlock.SetData(null, null);
+            // if ()
+            // {
+                
+            // }
         }
+        // foreach (DayBlock dayBlock in _blocks)
+        // {
+            // dayBlock.SetData(, null);
+        // }
     }
     
     

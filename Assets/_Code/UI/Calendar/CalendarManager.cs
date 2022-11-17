@@ -10,9 +10,10 @@ public class CalendarManager : MonoBehaviour
     
     #region private var
 
+    [SerializeField] private CalendarUI _calendarUI;
     private DateTime _currentDay;
     private DateTime[] _weekDisplay = new DateTime[7];
-    private DayOfWeek _dayOfWeek;
+    private DayOfWeek[] _daysOfWeek = new DayOfWeek[7];
     
     private int _weekOfTheYear;
     private Calendar _calendar;
@@ -31,9 +32,14 @@ public class CalendarManager : MonoBehaviour
         get => _currentDay;
     }
 
-    public DayOfWeek DayOfWeek
+    public DayOfWeek[] DaysOfWeek
     {
-        get => _dayOfWeek;
+        get => _daysOfWeek;
+    }
+
+    public DateTime[] WeekDisplay
+    {
+        get => _weekDisplay;
     }
     
     public Action OnFinishedLoading;
@@ -43,17 +49,12 @@ public class CalendarManager : MonoBehaviour
         Instance = this;
         Initialize();
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     void Initialize()
     {
         //Get current Day info
         _currentDay = DateTime.Today;
-        _dayOfWeek = _currentDay.DayOfWeek;
+        // _dayOfWeek = _currentDay.DayOfWeek;
        
         //Get week of the year
         _calendar = myCI.Calendar;
@@ -61,19 +62,30 @@ public class CalendarManager : MonoBehaviour
         myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
         _weekOfTheYear = _calendar.GetWeekOfYear(_currentDay, myCWR, myFirstDOW);
         // Debug.Log(_weekOfTheYear);
-
-
-        _weekDisplay[0] = _currentDay;
         
-        for (int i = 0; i < _weekDisplay.Length; i++)
-        {
-            if (_weekDisplay[i] != _currentDay)
-            {
-                
-            }
-        }
+        HandleDays(0, _currentDay);
         
+        _calendarUI.InitializeUI();
         OnFinishedLoading?.Invoke();
+        
+    }
+
+    private void HandleDays(int index, DateTime currentDay)
+    {
+        if (index < _weekDisplay.Length)
+        {
+            DateTime nextDay = currentDay.AddDays(1);
+            _weekDisplay[index] = nextDay;
+            _daysOfWeek[index] = _weekDisplay[index].DayOfWeek;
+            
+            if (index == 0)
+            {
+                _weekDisplay[0] = _currentDay;
+                _daysOfWeek[0] = _currentDay.DayOfWeek;
+            }
+            Debug.Log(_daysOfWeek[index]);
+            HandleDays(index + 1, _weekDisplay[index]);
+        }
         
     }
     
