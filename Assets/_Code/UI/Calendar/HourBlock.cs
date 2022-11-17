@@ -1,13 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HourBlock : MonoBehaviour
 {
     [SerializeField] private HourSelected myHour;
-  
-  
-  public void SelectHour()
+    [SerializeField]  private Button _button;
+
+    public Button Button
+    {
+        get => _button;
+    }
+    // private void Start()
+    // {
+    //     _button = GetComponent<Button>();
+    // }
+
+    public void SelectHour()
   {
     
   }

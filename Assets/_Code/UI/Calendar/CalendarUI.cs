@@ -36,25 +36,25 @@ public class CalendarUI : MonoBehaviour
             switch (_dayOfWeeks[i])
             {
                 case DayOfWeek.Monday:
-                    _blocks[i].SetData(daysName[0], _daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Monday,daysName[0], _daysDisplays[i].Day.ToString());
                     break;
                 case DayOfWeek.Tuesday:
-                    _blocks[i].SetData(daysName[1], _daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Tuesday,daysName[1], _daysDisplays[i].Day.ToString());
                     break;
                 case DayOfWeek.Wednesday:
-                    _blocks[i].SetData(daysName[2], _daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Wednesday,daysName[2], _daysDisplays[i].Day.ToString());
                     break;
                 case DayOfWeek.Thursday:
-                    _blocks[i].SetData(daysName[3], _daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Thursday,daysName[3], _daysDisplays[i].Day.ToString());
                     break;
                 case DayOfWeek.Friday:
-                    _blocks[i].SetData(daysName[4], _daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Friday,daysName[4], _daysDisplays[i].Day.ToString());
                     break;
                 case DayOfWeek.Saturday:
-                    _blocks[i].SetData(daysName[5],_daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Saturday,daysName[5],_daysDisplays[i].Day.ToString());
                     break;
                 case DayOfWeek.Sunday:
-                    _blocks[i].SetData(daysName[6], _daysDisplays[i].Day.ToString());
+                    _blocks[i].SetData(DayOfWeek.Sunday,daysName[6], _daysDisplays[i].Day.ToString());
                     break;
             }
 
