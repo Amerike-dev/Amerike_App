@@ -83,7 +83,7 @@ public class CalendarManager : MonoBehaviour
                 _weekDisplay[0] = _currentDay;
                 _daysOfWeek[0] = _currentDay.DayOfWeek;
             }
-            Debug.Log(_daysOfWeek[index]);
+            // Debug.Log(_daysOfWeek[index]);
             HandleDays(index + 1, _weekDisplay[index]);
         }
         
