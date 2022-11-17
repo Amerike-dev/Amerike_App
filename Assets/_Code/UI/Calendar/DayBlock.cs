@@ -19,8 +19,9 @@ public class DayBlock : MonoBehaviour
 
         dayWeekTxt.text = dayWeek;
         dayNumberTxt.text = dayNumber;
+        _dayOfWeek = day;
 
-        if (day == DayOfWeek.Sunday)
+        if (_dayOfWeek == DayOfWeek.Sunday)
         {
             disableFilter.SetActive(true);
             foreach (HourBlock block in hourButtons)
