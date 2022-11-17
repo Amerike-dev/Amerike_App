@@ -28,13 +28,13 @@ public class HourBlock : MonoBehaviour
 
 public enum HourSelected
 {
-     None,
-     SevenToNine_AM,
-     NineToEleven_AM,
-     ElevenToOne_AM,
-     OneToThree_PM,
-     ThreeToFive_PM,
-     FiveToSeven_PM,
-     SevenToNine_PM
+     None = 0,
+     SevenToNine_AM = 1,
+     NineToEleven_AM = 2,
+     ElevenToOne_AM = 3,
+     OneToThree_PM = 4,
+     ThreeToFive_PM = 5,
+     FiveToSeven_PM = 6,
+     SevenToNine_PM = 7
      
 }
