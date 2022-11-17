@@ -12,14 +12,21 @@ public class CredentialsReader : MonoBehaviour
     [SerializeField] private TMP_InputField _passwordTMP;
 
     private SecureString _userMailSS = new SecureString();
-    private SecureString _userPasswordSS = new SecureString();
-
-    private HashSet<char> _emailHash = new HashSet<char> (" ?&^$#!()+-,:;<>’\'*");
-    private HashSet<char> _passwordHash = new HashSet<char>(" ?&^$#@!()+-,:;<>’\'-_*");
+    private SecureString _userPasswordSS = new SecureString();  
 
     private void Start()
     {
         ValidateDependencies();
+    }
+
+    public void LoginButton()
+    {
+        ReadCredentials();
+    }
+    private void ValidateDependencies()
+    {
+        if (_userTMP == null) throw new NullReferenceException("User input field is not referenced in the script");
+        if (_passwordTMP == null) throw new NullReferenceException("User password field is not referenced in the script");
     }
 
     private void ReadCredentials()
@@ -30,50 +37,16 @@ public class CredentialsReader : MonoBehaviour
         string userMail = _userTMP.text.ToString();
         string userPassword = _passwordTMP.text.ToString();
 
-        userMail = SanitizeString(_emailHash, userMail);
-        userPassword = SanitizeString(_passwordHash, userPassword);
+        AmerikeEmail aMail = new AmerikeEmail(userMail);
+        AmerikePassword aPassword = new AmerikePassword(userPassword);
 
-        if(ValidateMail(userMail)) _userMailSS = BuildSecureString(_userMailSS, userMail);
-        _userPasswordSS = BuildSecureString(_userPasswordSS, userPassword);
+        PrintCredentials(aMail.EmailSecure, aPassword.PasswordSecure);
+       
     }
-
-    private SecureString BuildSecureString(SecureString secureString, string input)
+ 
+    private void PrintCredentials(SecureString emailSecure, SecureString passwordSecure)
     {
-        if (secureString.Length > 0) throw new Exception("Secure string is not empty");
-        if (input.Length == 0) throw new Exception("Input string is empty");
-
-        foreach (char character in input)
-        {
-            secureString.AppendChar(character);
-        }
-
-        return secureString;
-    }
-
-    private bool ValidateMail(string email)
-    {
-        if (email.Contains("@amerike.edu.mx")) return true;
-        else throw new NotSupportedException("Email does not contain expected domain");
-    }
-
-    private string SanitizeString(HashSet<char> hashSet, string dirtyString)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        foreach(char character in dirtyString)
-        {
-            if (!hashSet.Contains(character))
-            {
-                stringBuilder.Append(character);
-            }
-            else throw new NotSupportedException("String is trying to use forbidden characters: " + character);
-        }
-        return stringBuilder.ToString();
-    }
-
-    private void ValidateDependencies()
-    {
-        if (_userTMP == null) throw new NullReferenceException("User input field is not referenced in the script");
-        if (_passwordTMP == null) throw new NullReferenceException("User password field is not referenced in the script");
+        Debug.Log(emailSecure.ToString());
+        Debug.Log(passwordSecure.ToString());
     }
 }
