@@ -15,7 +15,7 @@ public class HttpRequests : MonoBehaviour
         // StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbxQEfUWoUu0gNcGUyJVkmCPRaqxWz30doEldNUCX6FMgkRqNRmX-XUuBIu2WE2VN3MN/exec"));
         //randomId = Random.Range(1,905);
         
-        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbxQEfUWoUu0gNcGUyJVkmCPRaqxWz30doEldNUCX6FMgkRqNRmX-XUuBIu2WE2VN3MN/exec"));
+        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbzW4RadKxuksUmYmiyIZhryY-etqRNBTqPzIhuIcoGuXg82gz7WCx4WK1021GrWRHuv/exec?resource=LabVerde"));
         
         // A non-existing page.
         //StartCoroutine(GetRequest("https://error.html"));
