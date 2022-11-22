@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using SimpleJSON;
 using TMPro;
 using UnityEngine.UI;
@@ -11,19 +12,17 @@ public class HttpRequests : MonoBehaviour
 {
     void Start()
     {
-        // A correct website page.
-        // StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbxQEfUWoUu0gNcGUyJVkmCPRaqxWz30doEldNUCX6FMgkRqNRmX-XUuBIu2WE2VN3MN/exec"));
-        //randomId = Random.Range(1,905);
-        
-        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbzW4RadKxuksUmYmiyIZhryY-etqRNBTqPzIhuIcoGuXg82gz7WCx4WK1021GrWRHuv/exec?resource=LabVerde"));
-        
-        // A non-existing page.
-        //StartCoroutine(GetRequest("https://error.html"));
+        Application.targetFrameRate = 60;
+        UpdateRequest("GameRoom");
     }
 
-    void Update()
+    public void UpdateRequest(string asset)
     {
-
+        string path = "";
+        path = "?resource="; 
+        path += asset;
+        
+        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbwdyXX1pAioy1_t_Y5oFUN9hfmyw0PCjgn8sjOE3ddbvsDp_FTJ-MraVKCfs3nq8cY8/exec " + path));
     }
 
     IEnumerator GetRequest(string uri)
