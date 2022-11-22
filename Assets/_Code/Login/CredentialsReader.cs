@@ -37,16 +37,15 @@ public class CredentialsReader : MonoBehaviour
         string userMail = _userTMP.text.ToString();
         string userPassword = _passwordTMP.text.ToString();
 
-        AmerikeEmail aMail = new AmerikeEmail(userMail);
-        AmerikePassword aPassword = new AmerikePassword(userPassword);
+        AmerikeEmail amerikeMail = new AmerikeEmail(userMail);
+        AmerikePassword amerikePassword = new AmerikePassword(userPassword);
 
-        PrintCredentials(aMail.EmailSecure, aPassword.PasswordSecure);
-       
+        PrintCredentials(amerikeMail.EmailSecure, amerikePassword.PasswordSecure);      
     }
  
     private void PrintCredentials(SecureString emailSecure, SecureString passwordSecure)
     {
-        Debug.Log(emailSecure.ToString());
-        Debug.Log(passwordSecure.ToString());
+        Debug.Log(SSBuilder.BuildUnsecureString(emailSecure).ToString());
+        Debug.Log(SSBuilder.BuildUnsecureString(passwordSecure).ToString());
     }
 }

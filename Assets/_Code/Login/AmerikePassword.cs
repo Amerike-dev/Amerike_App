@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Security;
-using UnityEngine;
 
 public class AmerikePassword
 {
@@ -15,12 +13,12 @@ public class AmerikePassword
 
     public AmerikePassword(string password)
     {
-        HandleNewPassword();
+        Password = password;
     }
 
     private void HandleNewPassword()
     {
-        string sanitizedPassword = Sanitizer.SanitizeString(_passwordHash, _dirtyPassword);
+        string sanitizedPassword = Sanitizer.SanitizeString(_passwordHash,_dirtyPassword);
         _cleanPassword = SSBuilder.BuildSecureString(sanitizedPassword);
     }
 }

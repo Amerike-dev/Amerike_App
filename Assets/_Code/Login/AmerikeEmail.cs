@@ -14,7 +14,7 @@ public class AmerikeEmail
 
     public AmerikeEmail(string mail)
     {
-        HandleNewMail();
+        Email = mail;
     }
 
     private void HandleNewMail()
