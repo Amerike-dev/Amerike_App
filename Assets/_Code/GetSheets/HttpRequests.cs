@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using SimpleJSON;
 using TMPro;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class HttpRequests : MonoBehaviour
@@ -20,9 +21,8 @@ public class HttpRequests : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        Debug.Log(UpdateRequest("Asset: "+"GameRoom"));
-        UpdateRequest("GameRoom");
-        // Sanitizer.InverseSanitize()
+        string asset = UpdateRequest("GameRoom");
+        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbwdyXX1pAioy1_t_Y5oFUN9hfmyw0PCjgn8sjOE3ddbvsDp_FTJ-MraVKCfs3nq8cY8/exec" + asset));
     }
 
     public string UpdateRequest(string asset)
@@ -32,7 +32,6 @@ public class HttpRequests : MonoBehaviour
         path += asset;
         return path;
         
-        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbwdyXX1pAioy1_t_Y5oFUN9hfmyw0PCjgn8sjOE3ddbvsDp_FTJ-MraVKCfs3nq8cY8/exec " + path));
     }
 
     IEnumerator GetRequest(string uri)
