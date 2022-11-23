@@ -10,17 +10,27 @@ using UnityEngine.UI;
 
 public class HttpRequests : MonoBehaviour
 {
+    enum MyEnum
+    {
+        ocupado,
+        libre,
+    }
+    
+    // private HashSet<int> validChars = new HashSet<int>(0,1);
     void Start()
     {
         Application.targetFrameRate = 60;
+        Debug.Log(UpdateRequest("Asset: "+"GameRoom"));
         UpdateRequest("GameRoom");
+        // Sanitizer.InverseSanitize()
     }
 
-    public void UpdateRequest(string asset)
+    public string UpdateRequest(string asset)
     {
         string path = "";
         path = "?resource="; 
         path += asset;
+        return path;
         
         StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbwdyXX1pAioy1_t_Y5oFUN9hfmyw0PCjgn8sjOE3ddbvsDp_FTJ-MraVKCfs3nq8cY8/exec " + path));
     }
